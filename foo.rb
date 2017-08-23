@@ -38,14 +38,14 @@ end
  
 def main
   options = OpenStruct.new
-  options.json = nil
+  options.yaml = nil
  
   parser = OptionParser.new do |opts|
     opts.banner = 'Usage: %s [options] file.erb' % $0
  
-    opts.on '-y', '--yaml=YAML-FILE', 'JSON file to populate local variables for the template' do |json_file|
-      File.open json_file, 'r' do |f|
-        options.json = YAML.load(f)
+    opts.on '-y', '--yaml=YAML-FILE', 'YAML file to populate local variables for the template' do |yaml_file|
+      File.open yaml_file, 'r' do |f|
+        options.yaml = YAML.load(f)
       end
     end
   end
@@ -56,7 +56,7 @@ def main
   end
  
   file_or_stdin args do |input|
-    puts ERBContext.render(options.json || {}, input.read, nil, '-')
+    puts ERBContext.render(options.yaml || {}, input.read, nil, '-')
   end
 end
  
