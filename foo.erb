@@ -1,2 +1,10 @@
-component=<%= @component %>
-instance_type=<%= @inst_type %>
+<% @instances.each do |name,details| %>
+module "<%= name -%>" {
+    component="<%= name -%>"
+    provider="aws.local"
+    
+<% details.each do |k,v| -%>
+    <%= k %>="<%= v -%>"
+<% end -%>
+}
+<% end %>

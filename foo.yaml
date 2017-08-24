@@ -1,2 +1,5 @@
-component: "nadqY"
-inst_type: "m4.xlarge"
+nadqY:
+  instance_type: "m4.xlarge"
+  instance_storage: "50"
+
+  

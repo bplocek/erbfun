@@ -8,9 +8,7 @@ require 'ostruct'
 class ERBContext
   def initialize(hash)
     raise ArgumentError, 'hash must be a Hash object' unless hash.is_a?(::Hash)
-    hash.each do |key, value|
-      instance_variable_set :"@#{key}", value
-    end
+    @instances = hash
   end
  
   def render(template)
